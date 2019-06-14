@@ -62,8 +62,7 @@
 														<li data-ten="${hocsinh.tenNguoiDung}" data-target="#fac"
 												id="${hocsinh.tenTK}" data-toggle="modal"
 												class="dropdown-item edit">Xem và sửa</li>
-														<li class="dropdown-item"><a
-												href="XoaHocSinh?tenTK=${hocsinh.tenTK}">Xóa</a></li>
+														<li class="dropdown-item delete-s" data-value="${hocsinh.tenTK}">Xoa</li>
 													</ul>
 												</div>
 											</td>

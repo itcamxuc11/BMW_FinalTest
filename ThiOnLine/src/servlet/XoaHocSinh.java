@@ -35,6 +35,14 @@ public class XoaHocSinh extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
         TaiKhoan loginedUser = MyUtils.getTaiKhoanDangNhap(session);
         if (loginedUser == null) {
@@ -47,23 +55,17 @@ public class XoaHocSinh extends HttpServlet {
 		}
 		
 		String tenTK = request.getParameter("tenTK");
+		String res ="";
 		try {
 			Connection conn = DBConnection.getMyConnection();
 			DBUtils.XoaTaiKhoan(conn, tenTK);
-			response.sendRedirect("QuanLyHocSinh");
+			res="ok";
 		}
 		catch(Exception e)
 		{
-			System.out.println(e.getMessage());
+			res = e.getLocalizedMessage();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.getWriter().write(res);
 	}
 
 }

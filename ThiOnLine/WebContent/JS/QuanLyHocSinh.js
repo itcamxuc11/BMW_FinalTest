@@ -1,4 +1,25 @@
 $(document).ready(function() {
+	 $(".delete-s").click(function () {
+		    alert("dm");
+		    if(confirm("Bạn muỗn xóa học sinh này chứ")){
+		        var tenTK = $(this).attr("data-value");
+		        $.ajax({
+		            url: "XoaHocSinh",
+		            type: "post",
+		            data: {
+		                tenTK: tenTK,
+		            },
+		            success: function(res)
+		            {
+		                if(res=="ok") {
+		                    alert("Xóa thành công");
+		                    location.reload();
+		                }
+		                else alert(res);
+		            }
+		        })
+		    }
+		})
 	$(".edit").click(function() {
         var tentk = this.id;
         var trr = document.getElementById("tr-"+tentk);
